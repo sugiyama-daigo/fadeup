@@ -1,0 +1,12 @@
+.fuHide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0px, 30px);
+}
+
+.fuDisp {
+    opacity: 1;
+    transition: all 1800ms;
+    visibility: visible;
+    transform: translate(0px, 0px);
+}
