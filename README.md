@@ -32,4 +32,15 @@ The animation state is also set by a class name.
 | delay time before animation starts | fuDelay |
 | Set animation time function | fuTimeFunc |
 
+#### movement(fuTsl)
+The set value of the move is written the below described.
+```
+fuTsl_startXpos_startYpos_startUnit_endXpos_endYpos_endUnit
+```
+##### Example
+```
+<p class="fuTsl_0_50_px_0_0_px">Animation Element</p>
+```
+
+
 
