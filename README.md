@@ -10,13 +10,13 @@ jQuery is set up the same way.
 <script src='fadeUp.js'></script>
 ```
 
-###　Mark HTML elements for animation
+### Mark HTML elements for animation
 Set the class name "fu" to the HTML element to be animated.
 ```
 <p class="fuTsl_0_50_px fuDisp">Animation Element</p>
 ```
 
-###　Set Animation Contents
+### Set Animation Contents
 Specify the content of the animation with class name.
 
 
