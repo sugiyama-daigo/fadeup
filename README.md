@@ -41,6 +41,11 @@ fuTsl_startXpos_startYpos_startUnit_endXpos_endYpos_endUnit
 ```
 <p class="fuTsl_0_50_px_0_0_px">Animation Element</p>
 ```
+The end position can be omitted.
+If no end position is specified, it moves to the original element position.
+```
+<p class="fuTsl_0_50_px">Animation Element</p>
+```
 
 
 
