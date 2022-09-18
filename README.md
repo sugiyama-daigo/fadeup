@@ -18,5 +18,18 @@ Set the class name "fu" to the HTML element to be animated.
 
 ### Set Animation Contents
 Specify the content of the animation with class name.
+| animation | class name |
+----|---- 
+| move | fuTsl |
+| scale | fuSkw |
+| skew | fuScl |
+| rotate | fuRot |
+
+The animation state is also set by a class name.
+| animation state | class name |
+----|---- 
+| animation time(duration) | fuTime |
+| delay time before animation starts | fuDelay |
+| Set animation time function | fuTimeFunc |
 
 
