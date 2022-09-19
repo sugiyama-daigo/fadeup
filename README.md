@@ -126,6 +126,53 @@ To set up an animation for a mobile, replace "fuSkw" with "fuMobSkw".
 You must have a PC setup for this configuration.
 
 
+### ■Rotate(fuRot)
+The set value of the rotate is written the below described.
+```
+fuRot_startXdeg_startYdeg_startZdeg_endXdeg_endYdeg_endZdeg
+```
+
+#### Example
+```
+<p class="fu fuRot_0_0_45_20_20_0">Animation Element</p>
+```
+The end rotate can be omitted.
+If no end rotate is specified, it rotate to the original element position.
+```
+<p class="fu fuRot_0_0_45">Animation Element</p>
+```
+
+#### setting up animation for tablets
+To set up an animation for a tablet, replace "fuRot" with "fuTabRot".
+```
+<p class="fu fuRot_0_0_45 fuTabRot_0_0_45">Animation Element</p>
+```
+You must have a PC setup for this configuration.
+
+#### setting up animation for mobile
+To set up an animation for a mobile, replace "fuRot" with "fuMobRot".
+```
+<p class="fu fuRot_0_0_45 fuMobRot_0_0_45">Animation Element</p>
+```
+You must have a PC setup for this configuration.
+
+### how to change breakpoint
+Change the settings in fadeUp.js.
+```
+const TAB_BREAKPOINT = 1024;
+```
+TAB_BREAKPOINT is the tablet animation toggle setting. 
+If the value is less than or equal to this value, the animation will be displayed for tablet.
+```
+const MOB_BREAKPOINT = 767;
+```
+MOB_BREAKPOINT is the mobile animation toggle setting. 
+If the value is less than or equal to this value, the animation will be displayed for mobile.
+
+
+
+
+
 
 
 
