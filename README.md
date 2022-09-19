@@ -13,7 +13,7 @@ jQuery is set up the same way.
 ### Mark HTML elements for animation
 Set the class name "fu" to the HTML element to be animated.
 ```
-<p class="fuTsl_0_50_px fuDisp">Animation Element</p>
+<p class="fu">Animation Element</p>
 ```
 
 ### Set Animation Contents
@@ -39,13 +39,29 @@ fuTsl_startXpos_startYpos_startUnit_endXpos_endYpos_endUnit
 ```
 ##### Example
 ```
-<p class="fuTsl_0_50_px_0_0_px">Animation Element</p>
+<p class="fu fuTsl_0_50_px_0_0_px">Animation Element</p>
 ```
 The end position can be omitted.
 If no end position is specified, it moves to the original element position.
 ```
-<p class="fuTsl_0_50_px">Animation Element</p>
+<p class="fu fuTsl_0_50_px">Animation Element</p>
 ```
+
+##### setting up animation for tablets
+To set up an animation for a tablet, replace "fuTsl" with "fuTabTsl".
+```
+<p class="fu fuTsl_0_50_px_0_0_px fuTabTsl_0_50_px_0_0_px">Animation Element</p>
+```
+You must have a PC setup for this configuration.
+
+##### setting up animation for mobile
+To set up an animation for a mobile, replace "fuTsl" with "fuMobTsl".
+```
+<p class="fuMobTsl_0_50_px_0_0_px">Animation Element</p>
+```
+You must have a PC setup for this configuration.
+
+
 
 
 
