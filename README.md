@@ -37,6 +37,7 @@ The set value of the move is written the below described.
 ```
 fuTsl_startXpos_startYpos_startUnit_endXpos_endYpos_endUnit
 ```
+
 ##### Example
 ```
 <p class="fu fuTsl_0_50_px_0_0_px">Animation Element</p>
@@ -57,7 +58,7 @@ You must have a PC setup for this configuration.
 ##### setting up animation for mobile
 To set up an animation for a mobile, replace "fuTsl" with "fuMobTsl".
 ```
-<p class="fuMobTsl_0_50_px_0_0_px">Animation Element</p>
+<p class="fu fuTsl_0_50_px_0_0_px fuMobTsl_0_50_px_0_0_px">Animation Element</p>
 ```
 You must have a PC setup for this configuration.
 
