@@ -95,6 +95,37 @@ To set up an animation for a mobile, replace "fuScl" with "fuMobScl".
 You must have a PC setup for this configuration.
 
 
+### ■skew(fuSkw)
+The set value of the skew is written the below described.
+```
+fuSkw_startXdeg_startYdeg_endXdeg_endYdeg
+```
+
+#### Example
+```
+<p class="fu fuSkw_45_45_20_20">Animation Element</p>
+```
+The end skew can be omitted.
+If no end skew is specified, it skew to the original element position.
+```
+<p class="fu fuSkw_45_45">Animation Element</p>
+```
+
+#### setting up animation for tablets
+To set up an animation for a tablet, replace "fuSkw" with "fuTabSkw".
+```
+<p class="fu fuSkw_45_45 fuTabSkw_30_30">Animation Element</p>
+```
+You must have a PC setup for this configuration.
+
+#### setting up animation for mobile
+To set up an animation for a mobile, replace "fuSkw" with "fuMobSkw".
+```
+<p class="fu fuSkw_45_45 fuMobSkw_30_30">Animation Element</p>
+```
+You must have a PC setup for this configuration.
+
+
 
 
 
