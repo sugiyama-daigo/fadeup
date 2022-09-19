@@ -156,7 +156,7 @@ To set up an animation for a mobile, replace "fuRot" with "fuMobRot".
 ```
 You must have a PC setup for this configuration.
 
-### how to change breakpoint
+### ■how to change breakpoint
 Change the settings in fadeUp.js.
 ```
 const TAB_BREAKPOINT = 1024;
