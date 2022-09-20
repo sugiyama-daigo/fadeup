@@ -67,9 +67,6 @@ const initFadeUp = () => {
         mobileFlg = false;
         tabletFlg = false;
 
-        console.log(`isTablet()=${isTablet()}`);
-        console.log(`isMobile()=${isMobile()}`);
-
         if (isTablet()) {
             if ($(elm).attr("class").match(TABLET_CHECK_REGEXP) !== null) {
                 fadeUpElms.splice(i, 1);
@@ -223,11 +220,7 @@ const fadeUp = (elm) => {
             pcResult = className.match(TRANSLATE_REGEXP);
             tabletResult = className.match(TRANSLATE_TABLET_REGEXP);
             mobileResult = className.match(TRANSLATE_MOBILE_REGEXP);
-            console.log(className);
-            console.log(mobileResult);
-            console.log(`isMobile()=${isMobile()}`);
-            console.log(`checkResults[0]=${checkResults[0]}`);
-            console.log(`checkResults[2]=${checkResults[2]}`);
+
             if (pcResult !== null || tabletResult !== null || mobileResult !== null) {
                 if (isTablet() && checkResults[0] && checkResults[1]) {
                     if (tabletResult !== null) {
@@ -244,12 +237,10 @@ const fadeUp = (elm) => {
                 } else if (isMobile() && checkResults[0] && checkResults[2]) {
                     if (mobileResult !== null) {
                         mobileResult = mobileResult[0];
-                        console.log('---');
-                        console.log(mobileResult);
-                        console.log(`checkTranslateMobileFormat(mobileResult)=${checkTranslateMobileFormat(mobileResult)}`);
+
                         if (checkTranslateMobileFormat(mobileResult)) {
                             posData = mobileResult.split('_');
-                            console.log(`posData=${posData}`);
+
                             if (posData.length > 4) {
                                 animData.push(generateTranslateCSS(mobileResult, false));
                             } else {
@@ -693,7 +684,6 @@ const generateRotateCSS = (animData, timing) => {
  * @returns animData
  */
 const generateTransformCSS = (classNamesStr) => {
-    console.log('call generateTransformCSS');
     let classNames = classNamesStr.split(' ');
     let className = '';
     let animData = [];

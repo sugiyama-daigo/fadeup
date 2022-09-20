@@ -169,6 +169,18 @@ const MOB_BREAKPOINT = 767;
 MOB_BREAKPOINT is the mobile animation toggle setting. 
 If the value is less than or equal to this value, the animation will be displayed for mobile.
 
+### ■Disable animation for tablet size or smaller
+To disable animation below the tablet size, add "fuNoTab" to the class name.
+```
+<p class="fu fuSkw_45_45 fuNoTab">Animation Element</p>
+```
+
+### ■Disable animation for mobile size or smaller
+To disable animation below the mobile size, add "fuNoMob" to the class name.
+```
+<p class="fu fuSkw_45_45 fuNoMob">Animation Element</p>
+```
+
 
 
 
