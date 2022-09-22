@@ -1,6 +1,9 @@
 # fadeup.js
 fadeup.js work for javascript animation. 
 
+## DEMO
+[fadeup.js demo](https://decent-works.net/fadeupjs/demo/demo.html)
+
 ## Usage
 download fadeup.js files and import setting to HTML head element.
 jQuery is set up the same way.
