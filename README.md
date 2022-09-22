@@ -181,6 +181,12 @@ To disable animation below the mobile size, add "fuNoMob" to the class name.
 <p class="fu fuSkw_45_45 fuNoMob">Animation Element</p>
 ```
 
+### ■Set "delay" for animation start time
+To delay the start of the animation, set "fuDelay_(delayTime milli seconds)" in the class name.
+```
+<div class="fu fuTsl_0_-100_px fuDelay_3000">Animation Element</p>
+```
+
 
 
 
