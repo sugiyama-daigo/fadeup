@@ -24,8 +24,8 @@ Specify the content of the animation with class name.
 | animation | class name |
 ----|---- 
 | move | fuTsl |
-| scale | fuSkw |
-| skew | fuScl |
+| scale | fuScl |
+| skew | fuSkw |
 | rotate | fuRot |
 
 The animation state is also set by a class name.
