@@ -1,8 +1,3 @@
-/*
-Copyright (c) 2021 Daigo Sugiyama
-Released under the MIT license
-https://opensource.org/licenses/mit-license.php
-*/
 const MOB_BREAKPOINT = 767;
 const TAB_BREAKPOINT = 1024;
 
@@ -63,34 +58,36 @@ const initFadeUp = () => {
     //set init state(one animation)
     for (let i = 0; i < fadeUpElms.length; i++) {
         elm = fadeUpElms[i];
-        classNames = $(elm).attr("class").split(' ');
-        mobileFlg = false;
-        tabletFlg = false;
+        if (($(window).height() + $(window).scrollTop()) < $(elm).offset().top) {
+            classNames = $(elm).attr("class").split(' ');
+            mobileFlg = false;
+            tabletFlg = false;
 
-        if (isTablet()) {
-            if ($(elm).attr("class").match(TABLET_CHECK_REGEXP) !== null) {
-                fadeUpElms.splice(i, 1);
-                tabletFlg = true;
-                i--;
+            if (isTablet()) {
+                if ($(elm).attr("class").match(TABLET_CHECK_REGEXP) !== null) {
+                    fadeUpElms.splice(i, 1);
+                    tabletFlg = true;
+                    i--;
+                }
+            } else if (isMobile()) {
+                if ($(elm).attr("class").match(MOBILE_CHECK_REGEXP) !== null) {
+                    fadeUpElms.splice(i, 1);
+                    mobileFlg = true;
+                    i--;
+                }
             }
-        } else if (isMobile()) {
-            if ($(elm).attr("class").match(MOBILE_CHECK_REGEXP) !== null) {
-                fadeUpElms.splice(i, 1);
-                mobileFlg = true;
-                i--;
+
+            if (!tabletFlg && !mobileFlg) {
+                animData = generateTransformCSS($(elm).attr("class"));
+                $(elm).css('transform', animData.join(' '));
+
+                // set hide class
+                if (($(window).height() + $(window).scrollTop()) < $(elm).offset().top) {
+                    $(elm).addClass('fuHide');
+                }
             }
+            if (fadeUpElms.length === 0) { break; }
         }
-
-        if (!tabletFlg && !mobileFlg) {
-            animData = generateTransformCSS($(elm).attr("class"));
-            $(elm).css('transform', animData.join(' '));
-
-            // set hide class
-            if (($(window).height() + $(window).scrollTop()) < $(elm).offset().top) {
-                $(elm).addClass('fuHide');
-            }
-        }
-        if (fadeUpElms.length === 0) { break; }
     };
     // //set init state(continuous animations)
     for (let i = 0; i < fadeUpAnimsElms.length; i++) {
@@ -220,7 +217,6 @@ const fadeUp = (elm) => {
             pcResult = className.match(TRANSLATE_REGEXP);
             tabletResult = className.match(TRANSLATE_TABLET_REGEXP);
             mobileResult = className.match(TRANSLATE_MOBILE_REGEXP);
-
             if (pcResult !== null || tabletResult !== null || mobileResult !== null) {
                 if (isTablet() && checkResults[0] && checkResults[1]) {
                     if (tabletResult !== null) {
@@ -237,10 +233,8 @@ const fadeUp = (elm) => {
                 } else if (isMobile() && checkResults[0] && checkResults[2]) {
                     if (mobileResult !== null) {
                         mobileResult = mobileResult[0];
-
                         if (checkTranslateMobileFormat(mobileResult)) {
                             posData = mobileResult.split('_');
-
                             if (posData.length > 4) {
                                 animData.push(generateTranslateCSS(mobileResult, false));
                             } else {
@@ -679,7 +673,7 @@ const generateRotateCSS = (animData, timing) => {
 }
 
 /**
- * generateTransformCSS
+ * getTransformCSS
  * @param classNames 
  * @returns animData
  */
@@ -695,22 +689,14 @@ const generateTransformCSS = (classNamesStr) => {
         // set start position
         // translation
         pcResult = className.match(TRANSLATE_REGEXP);
-        tabletResult = className.match(TRANSLATE_TABLET_REGEXP);
         mobileResult = className.match(TRANSLATE_MOBILE_REGEXP);
-        if (pcResult !== null || tabletResult !== null || mobileResult !== null) {
+        if (pcResult !== null || mobileResult !== null) {
             //translate
-            if (isMobile() && check_results[0] && check_results[2]) {
+            if (isMobile() && check_results[0] && check_results[1]) {
                 if (mobileResult !== null) {
                     mobileResult = mobileResult[0];
                     if (checkTranslateMobileFormat(mobileResult)) {
                         animData.push(generateTranslateCSS(mobileResult, true));
-                    }
-                }
-            } else if (isTablet() && check_results[0] && check_results[1]) {
-                if (tabletResult !== null) {
-                    tabletResult = tabletResult[0];
-                    if (checkTranslateTabletFormat(tabletResult)) {
-                        animData.push(generateTranslateCSS(tabletResult, true));
                     }
                 }
             } else {
@@ -725,21 +711,13 @@ const generateTransformCSS = (classNamesStr) => {
 
         //scale
         pcResult = className.match(SCALE_REGEXP);
-        tabletResult = className.match(SCALE_TABLET_REGEXP);
         mobileResult = className.match(SCALE_MOBILE_REGEXP);
-        if (pcResult !== null || tabletResult !== null || mobileResult !== null) {
-            if (isMobile() && check_results[3] && check_results[5]) {
+        if (pcResult !== null || mobileResult !== null) {
+            if (isMobile() && check_results[2] && check_results[3]) {
                 if (mobileResult !== null) {
                     mobileResult = mobileResult[0];
                     if (checkScaleMobileFormat(mobileResult)) {
                         animData.push(generateScaleCSS(mobileResult, true));
-                    }
-                }
-            } else if (isTablet() && check_results[3] && check_results[4]) {
-                if (tabletResult !== null) {
-                    tabletResult = tabletResult[0];
-                    if (checkScaleTabletFormat(tabletResult)) {
-                        animData.push(generateScaleCSS(tabletResult, true));
                     }
                 }
             } else {
@@ -753,23 +731,14 @@ const generateTransformCSS = (classNamesStr) => {
         }
 
         //skew
-        //6:skew, 7: skew tablet, 8: skew mobile,
         pcResult = className.match(SKEW_REGEXP);
-        tabletResult = className.match(SKEW_TABLET_REGEXP);
         mobileResult = className.match(SKEW_MOBILE_REGEXP);
-        if (pcResult !== null || tabletResult !== null || mobileResult !== null) {
-            if (isMobile() && check_results[6] && check_results[8]) {
+        if (pcResult !== null || mobileResult !== null) {
+            if (isMobile() && check_results[4] && check_results[5]) {
                 if (mobileResult !== null) {
                     mobileResult = mobileResult[0];
                     if (checkSkewMobileFormat(mobileResult)) {
                         animData.push(generateSkewCSS(mobileResult, true));
-                    }
-                }
-            } else if (isTablet() && check_results[6] && check_results[7]) {
-                if (tabletResult !== null) {
-                    tabletResult = tabletResult[0];
-                    if (checkSkewTabletFormat(tabletResult)) {
-                        animData.push(generateSkewCSS(tabletResult, true));
                     }
                 }
             } else {
